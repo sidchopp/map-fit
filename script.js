@@ -23,11 +23,11 @@ if (navigator.geolocation)
     console.log(`https://www.google.ca/maps/@${latitude},${longitude}`);
     const coords = [latitude, longitude];
     ////// code(below) copied form the overview of leaflet library webpage
-    // this 'map' below after L( which is for Leaflet) is the name of our id in the html where we want to show the location in map
+    // this 'map' below after L( which is for Leaflet) is the name of our id in the html where we want to show the location in map. 13 is the zoom level for the map which we can change if we want but 13 is the best
 
     const map = L.map('map').setView(coords, 13);
 
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
