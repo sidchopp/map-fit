@@ -35,23 +35,27 @@ if (navigator.geolocation)
 
     // we are using a method( on) from leaflet library( which is similar to addEventListner of JS)
     map.on('click', function (mapEvent) {
-      console.log(mapEvent);
-      const { lat, lng } = mapEvent.latlng;
-      // to add marker where a user clicks
-      L.marker({ lat, lng })
-        .addTo(map)
-        .bindPopup(
-          // these properties are taken from the docs of leaflet website
-          L.popup({
-            maxWidth: 250,
-            minWidth: 100,
-            autoClose: false,
-            closeOnClick: false,
-            className: 'running-popup'
-          })
-        )
-        .setPopupContent('That is me')
-        .openPopup();
+      // show form when a user click on the map
+      form.classList.remove('hidden')
+
+
+      // console.log(mapEvent);
+      // const { lat, lng } = mapEvent.latlng;
+      // // to add marker where a user clicks
+      // L.marker({ lat, lng })
+      //   .addTo(map)
+      //   .bindPopup(
+      //     // these properties are taken from the docs of leaflet website
+      //     L.popup({
+      //       maxWidth: 250,
+      //       minWidth: 100,
+      //       autoClose: false,
+      //       closeOnClick: false,
+      //       className: 'running-popup'
+      //     })
+      //   )
+      //   .setPopupContent('That is me')
+      //   .openPopup();
     });
 
   }, function () {
