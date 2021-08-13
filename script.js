@@ -10,3 +10,18 @@ const inputDistance = document.querySelector('.form__input--distance');
 const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
+
+// using geolocation API
+// Some browsers don't support it so we are using if statement
+
+if (navigator.geolocation)
+  navigator.geolocation.getCurrentPosition(function (position) {
+    //console.log(position);
+    // de structuring 
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    console.log(`https://www.google.ca/maps/@${latitude},${longitude}`);
+
+  }, function () {
+    alert(' could not locate your position')
+  });
