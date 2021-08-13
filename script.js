@@ -53,6 +53,8 @@ if (navigator.geolocation)
 
 form.addEventListener('submit', function (e) {
   e.preventDefault();
+
+
   // Display the marker
   const { lat, lng } = mapEvent.latlng;
   // to add marker where a user clicks
@@ -70,5 +72,8 @@ form.addEventListener('submit', function (e) {
     )
     .setPopupContent('That is me')
     .openPopup();
+
+  // clear input fields after submit
+  inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
 });
 
