@@ -21,17 +21,17 @@ if (navigator.geolocation)
     const { latitude } = position.coords;
     const { longitude } = position.coords;
     console.log(`https://www.google.ca/maps/@${latitude},${longitude}`);
-
+    const coords = [latitude, longitude];
     ////// code(below) copied form the overview of leaflet library webpage
     // this 'map' below after L( which is for Leaflet) is the name of our id in the html where we want to show the location in map
 
-    const map = L.map('map').setView([51.505, -0.09], 13);
+    const map = L.map('map').setView(coords, 13);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker([51.5, -0.09]).addTo(map)
+    L.marker(coords).addTo(map)
       .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
       .openPopup();
 
