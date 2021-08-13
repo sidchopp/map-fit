@@ -77,3 +77,10 @@ form.addEventListener('submit', function (e) {
   inputDistance.value = inputDuration.value = inputCadence.value = inputElevation.value = '';
 });
 
+// to toggle between cycling and running so that we get elevation and cadence fields resp
+// this will make only one of then visisble and the other hidden
+
+inputType.addEventListener('change', function () {
+  inputElevation.closest('.form__row').classList.toggle('form__row--hidden');
+  inputCadence.closest('.form__row').classList.toggle('form__row--hidden');
+})
