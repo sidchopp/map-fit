@@ -11,6 +11,8 @@ const inputDuration = document.querySelector('.form__input--duration');
 const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
+let map, mapEvent;
+
 // using geolocation API
 // Some browsers don't support it so we are using if statement
 
@@ -25,7 +27,7 @@ if (navigator.geolocation)
     ////// code(below) copied form the overview of leaflet library webpage
     // this 'map' below after L( which is for Leaflet) is the name of our id in the html where we want to show the location in map. 13 is the zoom level for the map which we can change if we want but 13 is the best
 
-    const map = L.map('map').setView(coords, 13);
+    map = L.map('map').setView(coords, 13);
     // to see what the leaflet library offers, we cl it
     //console.log(map);
 
@@ -34,7 +36,8 @@ if (navigator.geolocation)
     }).addTo(map);
 
     // we are using a method( on) from leaflet library( which is similar to addEventListner of JS)
-    map.on('click', function (mapEvent) {
+    map.on('click', function (mapE) {
+      mapEvent = mapE;
       // console.log(mapEvent);
       // show form when a user click on the map
       form.classList.remove('hidden')
@@ -48,7 +51,8 @@ if (navigator.geolocation)
 
 ///////// event handlers
 
-form.addEventListener('submit', function () {
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
   // Display the marker
   const { lat, lng } = mapEvent.latlng;
   // to add marker where a user clicks
