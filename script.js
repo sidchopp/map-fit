@@ -37,6 +37,8 @@ if (navigator.geolocation)
     map.on('click', function (mapEvent) {
       // show form when a user click on the map
       form.classList.remove('hidden')
+      // a blinking cursor appears in the input field of distance in the form as soon as someone clicks the map
+      inputDistance.focus();
 
 
       // console.log(mapEvent);
