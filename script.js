@@ -26,16 +26,23 @@ if (navigator.geolocation)
     // this 'map' below after L( which is for Leaflet) is the name of our id in the html where we want to show the location in map. 13 is the zoom level for the map which we can change if we want but 13 is the best
 
     const map = L.map('map').setView(coords, 13);
+    // to see what the leaflet library offers, we cl it
+    //console.log(map);
 
     L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    L.marker(coords).addTo(map)
-      .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
-      .openPopup();
+    // we are using a method( on) from leaflet library( which is similar to addEventListner of JS)
+    map.on('click', function (mapEvent) {
+      console.log(mapEvent);
+      const { lat, lng } = mapEvent.latlng;
 
-    /////// copied code from leaflet (above)
+      L.marker({ lat, lng })
+        .addTo(map)
+        .bindPopup("Thats'me.")
+        .openPopup();
+    })
 
   }, function () {
     alert(' could not locate your position')
